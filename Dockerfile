@@ -1,5 +1,6 @@
 FROM python:3.10.3-alpine3.15
 
+RUN /sbin/apk add --no-cache libpq
 RUN /usr/sbin/adduser -g python -D python
 
 USER python
@@ -12,6 +13,7 @@ WORKDIR /home/python/thycotic-scripts
 ENTRYPOINT ["/bin/sh"]
 
 ENV PATH="/home/python/venv/bin:${PATH}" \
+    PYTHONDONTWRITEBYTECODE="1" \
     PYTHONUNBUFFERED="1" \
     TZ="Etc/UTC"
 
