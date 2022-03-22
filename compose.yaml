@@ -3,4 +3,4 @@ services:
     image: ghcr.io/informatica-na-presales-ops/thycotic-scripts
     init: true
     volumes:
-      ./:/home/python/thycotic-scripts
+      - ./:/home/python/thycotic-scripts
