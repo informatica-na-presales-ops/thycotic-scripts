@@ -9,8 +9,10 @@ RUN /usr/local/bin/python -m venv /home/python/venv
 COPY --chown=python:python requirements.txt /home/python/thycotic-scripts/requirements.txt
 RUN /home/python/venv/bin/pip install --no-cache-dir --requirement /home/python/thycotic-scripts/requirements.txt
 
-COPY --chown=python:python digicert-tls-rsa-sha256-2020-ca1.cer /home/python/thycotic-secret-server-api/digicert-tls-rsa-sha256-2020-ca1.cer
-RUN /bin/cat /home/python/thycotic-secret-server-api/digicert-tls-rsa-sha256-2020-ca1.cer >> /home/python/venv/lib/python3.10/site-packages/certifi/cacert.pem
+COPY --chown=python:python digicert-tls-rsa-sha256-2020-ca1.cer /home/python/thycotic-scripts/digicert-tls-rsa-sha256-2020-ca1.cer
+RUN /bin/cat /home/python/thycotic-scripts/digicert-tls-rsa-sha256-2020-ca1.cer >> /home/python/venv/lib/python3.10/site-packages/certifi/cacert.pem
+
+COPY --chown=python:python sync-ops-web-passwords.py /home/python/thycotic-scripts/sync-ops-web-passwords.py
 
 WORKDIR /home/python/thycotic-scripts
 ENTRYPOINT ["/bin/sh"]
