@@ -43,7 +43,7 @@ def main_job():
             'thycotic_folder_id': os.getenv('SECRET_FOLDER_ID_LINUX'),
         })
 
-    log.info(f'Found {len(records)} in Thycotic')
+    log.info(f'Found {len(records)} secrets in Thycotic')
 
     with cnx:
         with cnx.cursor() as cur:
